@@ -1,152 +1,91 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 
-namespace UserOop
+namespace FundamentalProgramming
 {
     class Program
     {
         static void Main(string[] args)
         {
-            MenuChoice();
-        }
-        static void MenuChoice()
-        {
+            string lanjut;
             Activity a = new Activity();
-            bool repeat = false;
-            int menu;
-            do
-            {
-                try
-                {
-                    Console.WriteLine("1.Create User");
-                    Console.WriteLine("2.Show User");
-                    Console.WriteLine("3.Search User");
-                    Console.WriteLine("4.Login User");
-                    Console.WriteLine("5.Hapus Data User");
-                    Console.WriteLine("6.Edit Data User");
-                    Console.WriteLine("7.Exit");
-                    Console.Write("Masukkan Menu pilihan: ");
-                    menu = int.Parse(Console.ReadLine());
-                    switch (menu)
-                    {
-                        case 1:
-                            Console.Clear();
-                            for (int i = 0; i < 1; i++)
-                            {
-                                Console.WriteLine("=====Create User========");
-                                try
-                                {
-                                    User u = new User(a);
-                                    a.CreateUser(u);
-                                }
-                                catch (Exception)
-                                {
-                                    Console.WriteLine("Input not invalid...");
-                                    i--;
-                                    AnyKey();
-                                }
-                            }
-                            repeat = true;
-                            AnyKey();
-                            break;
-                        case 2:
-                            Console.Clear();
-                            Console.WriteLine("=====Show User========");
-                            a.ShowUser();
-                            repeat = true;
-                            AnyKey();
-                            break;
-                        case 3:
-                            Console.Clear();
-                            bool loop = false;
-                            do
-                            {
-                                    if (a.user.Count > 0)
-                                    {
-                                        Console.WriteLine("=====Search User========");
-                                        Console.Write("Masukkan pencarian ");
-                                        string nama = Console.ReadLine();
-                                        a.SearchUser(nama);
-                                        loop = false;
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine("data kosong");
-                                        loop = false;
-                                    }
-                                
-                            } while (loop == true);
-                            repeat = true;
-                            AnyKey();
-                            break;
-                        case 4:
-                            Console.Clear();
-                            Console.WriteLine("=====Login User========");
-                            a.Login();
-                            repeat = true;
-                            AnyKey();
-                            break;
-                        case 5:
-                            Console.Clear();
-                            if (a.user.Count > 0)
-                            {
-                                Console.WriteLine("=====Delete User========");
-                                a.DeleteUser();
-                            }
-                            else
-                            {
-                                Console.WriteLine("data kosong");
-                                loop = false;
-                            }
-                            repeat = true;
-                            AnyKey();
-                            break;
-                        case 6:
-                            Console.Clear();
-                            string userEdit;
-                            if (a.user.Count > 0)
-                            {
-                                Console.WriteLine("=====Edit User========");
-                            Console.Write("Masukkan username yang ingin diedit ");
-                            userEdit = Console.ReadLine();
-                            a.EditUser(userEdit);
-                            }
-                            else
-                            {
-                                Console.WriteLine("data kosong");
-                                loop = false;
-                            }
-                            repeat = true;
-                            AnyKey();
-                            break;
-                        case 7:
-                            repeat = false;
-                            break;
-                        default:
-                            Console.WriteLine("Menu tidak ditemukan!");
-                            repeat = true;
-                            AnyKey();
-                            break;
-                    }
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Menu harus angka!");
-                    AnyKey();
-                    repeat = true;
-                }
-                
-            } while (repeat==true);
-
-            
-            static void AnyKey()
-            {
-                Console.WriteLine("Press Any Key....");
-                Console.ReadKey();
+            menu:
+                int pilih;
+                Console.WriteLine("Menu Program Mahasiswa");
+                Console.WriteLine("=========================");
+                Console.WriteLine("1. Hitung Nilai Mahasiswa");
+                Console.WriteLine("2. Tambah Mahasiswa");
+                Console.WriteLine("3. Lihat Data Mahasiswa");
+                Console.WriteLine("4. Ubah Data Mahasiswa");
+                Console.WriteLine("5. Hapus Data Mahasiswa");
+                Console.WriteLine("=========================");
+                Console.Write("Masukkan Pilihan (1-4) : ");
+                pilih = Convert.ToInt32(Console.ReadLine());
                 Console.Clear();
+                switch (pilih)
+                {
+                    case 1:
+                        HitungGrade coba = new HitungGrade();
+                        coba.LihatNilai();
+                        break;
+                    case 2:
+                        Mahasiswa m = new Mahasiswa(a);
+                         a.BuatMhs(m);
+                        break;
+                    case 3:
+                        Console.WriteLine("Lihat Data Mahasiswa");
+                        Console.WriteLine("=========================");
+                        a.LihatMhs();
+                        break;
+                    case 4:
+                        string mhsEdit;
+                        if (a.mahasiswa.Count > 0)
+                        {
+                            Console.WriteLine("=====Ubah Mahasiswa========");
+                            Console.Write("Masukkan NIM yang ingin diubah : ");
+                            mhsEdit = Console.ReadLine();
+                            a.UbahMhs(mhsEdit);
+                        }
+                        else
+                        {
+                            Console.WriteLine("data kosong");
+                        }
+                    break;
+                    case 5:
+                        if (a.mahasiswa.Count > 0)
+                        {
+                            Console.WriteLine("=====Hapus Mahasiswa========");
+                            a.HapusMhs();
+                        }
+                        else
+                        {
+                            Console.WriteLine("data kosong");
+                           
+                        }
+                    break;
+                    default:
+                        Console.WriteLine("PIlihan tidak terdaftar.");
+                        Console.WriteLine("=========================");
+                        break;
+                }
+            lanjutMenu:
+                Console.WriteLine("Apakah mau dilanjut?");
+                Console.WriteLine("Ketik 'y'/'Y' untuk balik ke menu awal atau 'n'/'N' untuk keluar");
+                lanjut = (Console.ReadLine());
+                Console.Clear();
+            if (lanjut.ToLower() == "y")
+            {
+                goto menu;
             }
-            
+            else if (lanjut.ToLower() == "n")
+            {
+                Environment.Exit(0);
+            }
+            else {
+                Console.WriteLine("Inputan salah");
+                goto lanjutMenu;
+            }
         }
     }
-
-    
+ 
 }
