@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,9 +6,6 @@ namespace UserOop
 {
     class Activity
     {
-        //List penampung
-        //public List<string> name = new List<string>();
-        //public List<string> nameLast = new List<string>();
         public List<User> user = new List<User>();
         public void ShowUser()
         {
@@ -46,9 +43,6 @@ namespace UserOop
         }
         public void SearchUser(string nama)
         {
-            ///variabel penampung awal (saat delete user akan bug)
-            //var cari = false;
-            //var index = user.Exists(user => user.FirstName == nama);
                 var validate= user.Exists(user => user.FirstName.Contains(nama)|| user.LastName.Contains(nama));
                 if (validate == true && user.Count>0)
                 {
@@ -108,21 +102,6 @@ namespace UserOop
         }
         public void DeleteUser()
         {
-            ///Hapus user dengan index
-            /*try
-            {
-                int index;
-                Console.WriteLine("Masukkan index data yang dihapus ");
-                index = int.Parse(Console.ReadLine());
-                user.RemoveAt(index - 1);
-                Console.WriteLine("==============================");
-                Console.WriteLine("Data Sukses Terhapus");
-                Console.WriteLine("==============================");
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Data kosong!");
-            }*/
             try
             {
                 Console.Write("Silahkan Masukkan data yang ingin di hapus :");
@@ -130,10 +109,6 @@ namespace UserOop
                 var dlt = Console.ReadLine();
                 var validasi = user.Exists(x => x.FirstName == dlt);
                 var validate = user.FindAll(user => user.FirstName == dlt);
-                //var valNameFirst = name.FindAll(a => a == dlt);
-                //var valNameF = name.Exists(b => b == dlt);
-                //var valNameLast = nameLast.FindAll(a => a == dlt);
-                //var valNameL = nameLast.Exists(b => b == dlt);
                 if (validasi == true)
                 {
                     foreach (User item in validate)
@@ -141,10 +116,6 @@ namespace UserOop
                         Console.WriteLine("data berhasil dihapus");
                         user.Remove(item);
                     }
-                    /*foreach (string ite in valNameFirst)
-                    {
-                        name.Remove(ite);
-                    }*/
                 }
                 else
                 {
