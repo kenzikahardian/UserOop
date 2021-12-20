@@ -17,7 +17,7 @@ namespace UserOop
             {
                 try
                 {
-                    Console.WriteLine("=====Program Authentikasi=====");
+                    Console.WriteLine("=====Authentication=====");
                     Console.WriteLine("1.Create User");
                     Console.WriteLine("2.Show User");
                     Console.WriteLine("3.Search User");
