@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,7 +10,6 @@ namespace UserOop
         public string LastName { get; set; }
         public string Password { get; set; }
         public string UserName { get; set; }
-        //Activity a = new Activity();
         public string HashedPassword { get; set; }
         public User(Activity a)
         {
@@ -24,15 +23,10 @@ namespace UserOop
             Console.Write("Masukkan Password: ");
             this.Password = Console.ReadLine();
             this.HashedPassword = BCrypt.Net.BCrypt.HashPassword(Password);
-            var userA = a.user.Exists(x => x.FirstName == FirstName);
-            var userB = a.user.Exists(y => y.LastName == LastName);
-            /*var userF = a.name.Exists(x=>x==FirstName);
-            var userL = a.nameLast.Exists(x => x == LastName);
-            a.name.Add(FirstName);
-            a.nameLast.Add(LastName);*/
+            var userCheck = a.user.Exists(x => x.UserName == UserName);
             while (loop)
             {
-                if (userA||userB)
+                if (userCheck)
                 {
                     Random random = new Random();
                     double flt = random.NextDouble();
