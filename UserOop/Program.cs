@@ -17,6 +17,7 @@ namespace UserOop
             {
                 try
                 {
+                    Console.WriteLine("=====Program Authentikasi=====");
                     Console.WriteLine("1.Create User");
                     Console.WriteLine("2.Show User");
                     Console.WriteLine("3.Search User");
@@ -24,7 +25,7 @@ namespace UserOop
                     Console.WriteLine("5.Hapus Data User");
                     Console.WriteLine("6.Edit Data User");
                     Console.WriteLine("7.Exit");
-                    Console.Write("Masukkan Menu pilihan: ");
+                    Console.Write("Masukkan Menu pilihan (1-7): ");
                     menu = int.Parse(Console.ReadLine());
                     switch (menu)
                     {
@@ -63,7 +64,7 @@ namespace UserOop
                                     if (a.user.Count > 0)
                                     {
                                         Console.WriteLine("=====Search User========");
-                                        Console.Write("Masukkan pencarian ");
+                                        Console.Write("Masukkan pencarian : ");
                                         string nama = Console.ReadLine();
                                         a.SearchUser(nama);
                                         loop = false;
@@ -106,7 +107,7 @@ namespace UserOop
                             if (a.user.Count > 0)
                             {
                                 Console.WriteLine("=====Edit User========");
-                            Console.Write("Masukkan username yang ingin diedit ");
+                            Console.Write("Masukkan username yang ingin diedit : ");
                             userEdit = Console.ReadLine();
                             a.EditUser(userEdit);
                             }
