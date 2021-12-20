@@ -22,7 +22,7 @@ namespace UserOop
                     Console.WriteLine("2.Show User");
                     Console.WriteLine("3.Search User");
                     Console.WriteLine("4.Login User");
-                    Console.WriteLine("5.Hapus Data User");
+                    Console.WriteLine("5.Delete Data User");
                     Console.WriteLine("6.Edit Data User");
                     Console.WriteLine("7.Exit");
                     Console.Write("Masukkan Menu pilihan (1-7): ");
